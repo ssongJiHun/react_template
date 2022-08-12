@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
-import TopBar from './TopBar';
+import NavBar from './NavBar';
 import FooterBar from './FooterBar';
 
 let Root = styled.div({
-  backgroundColor: 'primary',
+  backgroundColor: '#F8F8FA',
   height: '100%',
   overflow: 'hidden',
   width: '100%'
@@ -14,33 +14,33 @@ let Wrapper = styled.div({
   display: 'flex',
   flex: '1 1 auto',
   overflow: 'hidden',
-  paddingTop: 64,
+  paddingTop: 40,
+  paddingLeft: 250
+
 })
 let ContentContainer = styled.div({
   display: 'flex',
   flex: '1 1 auto',
-  overflow: 'hidden'
+  overflow: 'hidden',
 })
 let Content = styled.div({
   flex: '1 1 auto',
   height: '100%',
-  overflow: 'auto'
+  overflow: 'auto',
 })
 
 
 const DashboardLayout = ({ children }) => {
   return (
     <Root>
-      <TopBar />
+      <NavBar/>
       <Wrapper>
         <ContentContainer>
           <Content>
             {children}
 
-            <FooterBar />
           </Content>
         </ContentContainer>
-
       </Wrapper>
     </Root>
   );

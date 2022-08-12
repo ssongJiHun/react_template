@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Divider from '@mui/material/Divider';
 import styled from '@emotion/styled'
 
-let Footer = styled.footer({
+let Footer = styled.div({
   width: "100%",
   margin: "auto",
   padding: "0 0 1.5rem 0"
@@ -21,16 +21,13 @@ let Footer_image = styled.div({
   marginTop: 20,
   marginBottom: 20
 })
-const Footer_divider = styled(Divider)({
-  marginTop: 50
-})
+
 
 
 const DashBoardFooterLayout = () => {
 
   return (
     <Footer>
-      <Footer_divider />
       <Footer_image>
         {/* <img src={TobelongLogo} /> */}
       </Footer_image>
