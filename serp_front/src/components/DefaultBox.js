@@ -9,13 +9,12 @@ const DefaultBox = () => {
         alignItems: "center",
         border: "1px solid #E6E7E9",
         borderRadius: "10px",
-        height: "414px",
         width: "100%",
-        minWidth: "708px",
+        height: "429px",
         fontWeight: 400,
         fontSize: "15px",
         color: "#919294",
-        mr: "20px",
+        background: "#FFFFFF",
       }}
     >
       업체를 선택해주세요.

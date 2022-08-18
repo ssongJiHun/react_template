@@ -37,14 +37,30 @@ const CompanyListTable = (props) => {
     >
       <Table>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.company}>
-              <TableCell component="th" scope="row">
+          {rows.map((row, i) => (
+            <TableRow key={i}>
+              <TableCell
+                component="th"
+                sx={{
+                  display: "flex",
+                  cursor: "pointer",
+                  "&:hover": {
+                    backgroundColor: "black",
+                  },
+                }}
+                scope="row"
+                onClick={() => {
+                  alert(i);
+                }}
+              >
                 <Box sx={{ display: "flex" }}>
-                  <Box>
-                    <Avatar variant="rounded" sx={{ mr: "10px" }} />
-                  </Box>
-                  <Box>
+                  <Avatar variant="rounded" sx={{ mr: "10px" }} />
+                  <Box
+                    sx={{
+                      whiteSpace: "nowrap",
+                      flexGrow: 1,
+                    }}
+                  >
                     <Typography
                       sx={{
                         fontWeight: 600,
@@ -65,10 +81,8 @@ const CompanyListTable = (props) => {
                       등록일 {row.date}
                     </Typography>
                   </Box>
+                  <EditIcon sx={{ color: "#919294" }} />
                 </Box>
-              </TableCell>
-              <TableCell align="right">
-                <EditIcon sx={{ color: "#919294" }} />
               </TableCell>
             </TableRow>
           ))}

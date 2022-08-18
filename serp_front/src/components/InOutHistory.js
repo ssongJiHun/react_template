@@ -21,11 +21,10 @@ const InOutHistory = () => {
     <TableContainer
       component={Box}
       sx={{
-        margin: "100px",
         border: "1px solid #E6E7E9",
         borderRadius: "10px",
-        height: "423.5px",
-        width: "400px",
+        height: "100%",
+        width: "100%",
       }}
     >
       <Table>

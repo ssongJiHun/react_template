@@ -31,7 +31,7 @@ const columns = [
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         <EditIcon sx={{ mr: "29px", color: "white" }} />
-        {"전화번호"}
+        {"연락처"}
       </Box>
     ),
     renderCell: (params) => {
@@ -43,7 +43,12 @@ const columns = [
             justifyContent: "center",
           }}
         >
-          <EditIcon sx={{ mr: "29px", color: "#919294" }} />
+          <EditIcon
+            sx={{
+              mr: "29px",
+              color: "#919294",
+            }}
+          />
           {params.value}
         </Box>
       );
