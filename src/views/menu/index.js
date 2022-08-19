@@ -1,12 +1,12 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 const Menu = () => {
-    const params = useParams();
+    // const params = useParams();
 
   return (
     <div>
-     {params.mode}
+     대쉬보드 TBD
     </div>
   );
 }

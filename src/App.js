@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import RenderRoutes from 'src/routes';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Interceptor } from "src/utils/axios_api";
+import { Interceptor } from "src/utils/axios";
 
 const queryClient = new QueryClient();
 const theme = createTheme({

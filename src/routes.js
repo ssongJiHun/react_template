@@ -8,6 +8,11 @@ import DashboardLayout from 'src/layouts/DashboardLayout';
 
 const routes = [
   {
+    path: '/login',
+    guard: RouterGuard,
+    element: React.lazy(() => import('src/views/signIn')),
+  },
+  {
     path: '/memu',
     guard: LoginGuard,
     layout: DashboardLayout,
@@ -15,20 +20,32 @@ const routes = [
   },
   {
     path: '/404',
-    guard: RouterGuard,
     element: React.lazy(() => import('src/views/errors/NotFoundView')),
-  },
-  {
-    path: '/login',
-    guard: RouterGuard,
-    element: React.lazy(() => import('src/views/signIn')),
   },
   // customize  routes
   {
-    path: '/memu/:mode',
+    path: '/memu/companyinfo',
     guard: LoginGuard,
     layout: DashboardLayout,
-    element: React.lazy(() => import('src/views/menu')),
+    element: React.lazy(() => import('src/views/menu/CompanyInfoView')),
+  },
+  {
+    path: '/memu/purchasemng',
+    guard: LoginGuard,
+    layout: DashboardLayout,
+    element: React.lazy(() => import('src/views/menu/PurchaseMngView')),
+  },
+  {
+    path: '/memu/invntmng',
+    guard: LoginGuard,
+    layout: DashboardLayout,
+    element: React.lazy(() => import('src/views/menu/InvntMngView')),
+  },
+  {
+    path: '/memu/salesmng',
+    guard: LoginGuard,
+    layout: DashboardLayout,
+    element: React.lazy(() => import('src/views/menu/SalesMngView')),
   },
 
   {

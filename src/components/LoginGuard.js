@@ -3,37 +3,26 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
 
-import api from 'src/utils/axios_api'
+import axios from 'src/utils/axios'
 
-// 각종페이지(로그인 세션X) -> 로그인페이지
+// 각종페이지(로그인 세션X) 들어갈때
 const LoginGuard = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    const navigate = useNavigate();
-    let isPost = false;
+    // const navigate = useNavigate();
+     let isPost = false;
 
     useEffect(() => {
-        if (isPost)
-            return;
-        isPost = true;
-
-        api.post('/refresh')
-            .then((res) => {
-                // 토큰 o
-                if (res.status == 201) { 
-                    localStorage.removeItem('user')
-                    localStorage.setItem('user', JSON.stringify(res.data, ['accessToken', 'refreshToken']))
-                }
+         if (isPost)
+             return;
+         isPost = true;
+        axios.post('/jwt')
+            .then((res) => { // 토큰 o -> ... page
                 setLoading(false)
-
-            })
-            .catch((err) => {
-                // 토큰 x
-                navigate("/login", { replace: true })
-            })
+            }) // 토큰x -> axios에서 처리
     }, [])
 
     if (loading)
-        return (<>Loading</>);
+        return <></>;
 
 
     return (

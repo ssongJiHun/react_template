@@ -1,4 +1,3 @@
-/* eslint-disable no-use-before-define */
 import React from 'react';
 import { Drawer, Box, List, ListItemIcon, ListItemButton, ListItemText } from '@mui/material'
 import Divider from '@mui/material/Divider';
@@ -9,7 +8,8 @@ import PurchaseMngIcon from '@mui/icons-material/LocalMallOutlined';
 import InvntMngIcon from '@mui/icons-material/InboxOutlined';
 import SalesMngIcon from '@mui/icons-material/ReceiptLongOutlined';
 
-import { useParams , useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const items = [
   {
@@ -35,14 +35,23 @@ const items = [
 ]
 
 const NavBar = (props) => {
-  const params = useParams();
+  const locationHook = useLocation();
+  const splitUrl = locationHook?.pathname?.split('/') ?? null;
+  const location = splitUrl?.length > 1 ? splitUrl[splitUrl.length - 1] : null;
   const navigate = useNavigate();
 
   const handleListItemClick = (value) => {
-    console.log(value)
     navigate(`/memu/${value}`);
-    
   };
+
+  const handleLogOutClick = () => {
+    localStorage.removeItem('Authorization')
+    navigate('/login');
+  }
+  const handleLogoClick = () => {
+    navigate('/memu');
+  }
+
   return (
     <Box>
       <Drawer
@@ -59,37 +68,41 @@ const NavBar = (props) => {
 
         <List>
           <Box sx={{ pl: 20, py: 22, pr: 88.88 }}>
-            <img src={process.env.PUBLIC_URL + '/nav_logo.png'} style={{ width: "100%" }} />
+            <img src={process.env.PUBLIC_URL + '/nav_logo.png'} style={{ width: "100%" }} onClick={handleLogoClick}/>
           </Box>
           <Divider />
           {/* 유저 정보 */}
-          <UserInfoCard />
+          <UserInfoCard user={{email : 'levin.song@sothecode.com', department : '개발팀'}} handleLogOutClick={handleLogOutClick}/>
           {/* 아이템  */}
           {
-            items.map((value, i) => (
-              <ListItemButton 
-              onClick={()=>{handleListItemClick(value.href)}}
-              key={i} 
-              sx={{
-                 mx: 20, 
-                 fontSize: '50px',
-                 fontWeight: 'bold',
-                 '&:hover': { borderRadius : '4px', backgroundColor: 'rgba(56, 85, 179, 0.08)'},
-                }}
-                selected={params.mode === value.href}>
-                <ListItemIcon sx={{ 
-                  minWidth : 16,
-                  pr : 15,
-                  color : params.mode === value.href && 'primary.main',
-                  fontSize: '16px'}}>
-                  {value.icon}
-                </ListItemIcon>
-                <ListItemText
-                  primaryTypographyProps={{ fontWeight: 'bold', fontSize: '14px', color : params.mode === value.href && 'primary.main'}}
-                  primary={value.title} />
-
-              </ListItemButton>
-            ))
+            items.map((value, i ) => {
+              const selected = location === value.href;
+              
+              return (
+                <ListItemButton 
+                onClick={()=>{handleListItemClick(value.href)}}
+                key={i} 
+                sx={{
+                   mx: 20, 
+                   fontSize: '50px',
+                   fontWeight: 'bold',
+                   '&:hover': { borderRadius : '4px', backgroundColor: 'rgba(56, 85, 179, 0.08)'},
+                  }}
+                  selected={selected}>
+                  <ListItemIcon sx={{ 
+                    minWidth : 16,
+                    pr : 15,
+                    color : selected && 'primary.main',
+                    fontSize: '16px'}}>
+                    {value.icon}
+                  </ListItemIcon>
+                  <ListItemText
+                    primaryTypographyProps={{ fontWeight: 'bold', fontSize: '14px', color : selected && 'primary.main'}}
+                    primary={value.title} />
+  
+                </ListItemButton>
+              )
+            })
           }
 
         </List>

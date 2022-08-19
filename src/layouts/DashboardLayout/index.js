@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled'
 import NavBar from './NavBar';
-import FooterBar from './FooterBar';
 
 let Root = styled.div({
   backgroundColor: '#F8F8FA',
@@ -13,20 +12,23 @@ let Root = styled.div({
 let Wrapper = styled.div({
   display: 'flex',
   flex: '1 1 auto',
-  overflow: 'hidden',
-  paddingTop: 40,
   paddingLeft: 250
-
 })
 let ContentContainer = styled.div({
   display: 'flex',
   flex: '1 1 auto',
-  overflow: 'hidden',
 })
 let Content = styled.div({
   flex: '1 1 auto',
+  width: "100%",
   height: '100%',
-  overflow: 'auto',
+  minWidth: "440px",
+  maxWidth : '1591px',
+  minHeight : 903,
+  paddingTop: 40,
+  paddingLeft : 40,
+  paddingRight : 40,
+  paddingBottom : 34
 })
 
 

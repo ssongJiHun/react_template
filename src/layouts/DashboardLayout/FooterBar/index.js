@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Divider from '@mui/material/Divider';
 import styled from '@emotion/styled'
 
-let Footer = styled.div({
+const Footer = styled.div({
   width: "100%",
   margin: "auto",
   padding: "0 0 1.5rem 0"
 })
-let Footer_descript = styled.div({
+const Footer_descript = styled.div({
   textAlign: "center",
   fontWeight: 200,
 })
-let Footer_ment = styled.div({
+const Footer_ment = styled.div({
   padding: 4,
   fontSize: 12
 })
-let Footer_image = styled.div({
+const Footer_image = styled.div({
   textAlign: "center",
   marginTop: 20,
   marginBottom: 20

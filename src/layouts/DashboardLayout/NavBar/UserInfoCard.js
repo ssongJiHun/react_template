@@ -8,7 +8,7 @@ import { useState } from 'react';
 import Paper from '@mui/material/Paper'
 import LogoutIcon from '@mui/icons-material/Logout';
 
-const UserInfoCard = () => {
+const UserInfoCard = (props) => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(false);
 
@@ -21,15 +21,16 @@ const UserInfoCard = () => {
                 height: '32px',
                 fontSize: '14px'
             },
-            children: `${name.split('.')[0][0]}${name.split('.')[1][0]}`,
+             children: `${name.split('.')[0][0]}${name.split('.')[1][0]}`,
         };
     }
 
-    const handleClick = () => (event) => {
+    const handleArrowClick = () => (event) => {
         setAnchorEl(event.currentTarget);
         setOpen((previousOpen) => !previousOpen);
     };
 
+    const name = props.user.email.split('@')[0];
     return (
         <Box>
             <Box component='div' sx={{
@@ -42,15 +43,15 @@ const UserInfoCard = () => {
             }}>
 
                 <Box sx={{ px: 16, py: 19, display: 'flex' }} >
-                    <Avatar {...stringAvatar('Leo.moon')} />
+                    <Avatar {...stringAvatar(name)} />
 
                     <Box sx={{ ml: 12, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flexGrow: 1 }}>
-                        <Box sx={{ fontWeight: 'bold', fontSize: '14px' }}> Leo.moon </Box>
-                        <Box sx={{ fontSize: '12px' }}> 영업팀 </Box>
+                        <Box sx={{ fontWeight: 'bold', fontSize: '14px' }}> {name} </Box>
+                        <Box sx={{ fontSize: '12px' }}> {props.user.department} </Box>
                     </Box>
 
                     <Box sx={{ borderRadius: '4px', backgroundColor: 'basis.dark', }}>
-                        <IconButton onClick={handleClick()} aria-label="settings">
+                        <IconButton onClick={handleArrowClick()} aria-label="settings">
                             <KeyboardArrowDownIcon color="primary" fontSize="small" />
                         </IconButton>
                     </Box>
@@ -59,7 +60,7 @@ const UserInfoCard = () => {
             </Box>
             <Popper open={open} anchorEl={anchorEl} placement={'bottom-end'} sx={{ zIndex: 9999 }}>
                 <Paper elevation={3} sx={{pl : 13.6}}>
-                    <Button color="logout" sx={{ width: '178px', justifyContent: "flex-start", fontSize: '13px', fontWeight: 'bold' }} startIcon={<LogoutIcon />} >
+                    <Button color="logout" onClick={props.handleLogOutClick} sx={{ width: '178px', justifyContent: "flex-start", fontSize: '13px', fontWeight: 'bold' }} startIcon={<LogoutIcon />} >
                         로그아웃
                     </Button>
                 </Paper>
