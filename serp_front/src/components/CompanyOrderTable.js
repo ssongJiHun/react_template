@@ -1,4 +1,4 @@
-import { Box, Grid, Button, Divider } from "@mui/material";
+import { Box, Grid, Button, Divider, Input } from "@mui/material";
 
 const QuantityBox = {
   display: "flex",
@@ -6,13 +6,11 @@ const QuantityBox = {
   border: "1px solid #E6E7E9",
   borderRadius: "4px",
   width: "100%",
-  height: "32px",
+  height: "28px",
+  marginBottom: "5px",
   justifyContent: "center",
   padding: "1px",
   margin: "3px",
-  fontWeight: 400,
-  fontSize: "13px",
-  color: "#919294",
 };
 
 const StockBox = {
@@ -64,7 +62,6 @@ const CompanyOrderTable = () => {
         display: "flex",
         alignItens: "center",
         justifyContent: "center",
-        padding: "15px",
         width: "100%",
         minwidth: "423.5px",
         height: "auto",
@@ -74,7 +71,7 @@ const CompanyOrderTable = () => {
         borderRadius: "10px",
       }}
     >
-      <Grid container rowSpacing={0}>
+      <Grid container rowSpacing={0} sx={{ margin: "15px" }}>
         <Grid item xs={12}>
           <Box
             sx={{
@@ -146,12 +143,93 @@ const CompanyOrderTable = () => {
               width: "100%",
             }}
           >
-            <Box sx={QuantityBox}>0</Box>
-            <Box sx={QuantityBox}>0</Box>
-            <Box sx={QuantityBox}>0</Box>
-            <Box sx={QuantityBox}>0</Box>
-            <Box sx={QuantityBox}>0</Box>
-            <Box sx={QuantityBox}>0</Box>
+            <Box
+              fullwidth
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                pl: "3px",
+                pr: "3px",
+              }}
+            ></Box>
+            <Divider sx={{ my: "5px" }} />
+            <Box
+              fullwidth
+              sx={{
+                float: "left",
+                display: "flex",
+                justifyContent: "space-evenly",
+                width: "100%",
+              }}
+            >
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+              <Box sx={QuantityBox}>
+                <Input
+                  inputProps={{ style: { textAlign: "center" } }}
+                  sx={{
+                    fontSize: "13px",
+                    fontWeight: 400,
+                  }}
+                  disableUnderline
+                  placeholder="0"
+                />
+              </Box>
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>

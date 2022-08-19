@@ -21,17 +21,15 @@ const StockingTable = () => {
         display: "flex",
         alignItens: "center",
         justifyContent: "center",
-        padding: "15px",
         width: "100%",
         minWidth: "860px",
         height: "auto",
         background: "#FFFFFF",
         border: "1px solid #E6E7E9",
         borderRadius: "10px",
-        margin: "20px",
       }}
     >
-      <Grid container rowSpacing={0}>
+      <Grid container rowSpacing={0} sx={{ margin: "15px" }}>
         <Grid item xs={12}>
           <CompanyChoice sx={{ mb: "5px" }} />
         </Grid>
@@ -91,24 +89,21 @@ const StockingTable = () => {
               width: "100%",
             }}
           >
-            <Box sx={{width: "100%", margin: "5px"}}>
+            <Box sx={{ width: "100%", margin: "5px" }}>
               <ProductInfoInput />
               <ProductInfoInput />
             </Box>
-            <Box sx={{width: "100%", margin: "5px"}}>
+            <Box sx={{ width: "100%", margin: "5px" }}>
               <ProductInfoInput />
             </Box>
-            <Box sx={{width: "100%", margin: "5px"}}>
+            <Box sx={{ width: "100%", margin: "5px" }}>
               <ProductInfoInput />
             </Box>
-            <Box sx={{width: "100%", margin: "5px"}}>
+            <Box sx={{ width: "100%", margin: "5px" }}>
               <ProductInfoInput />
             </Box>
-            <Box sx={{width: "100%", margin: "5px"}}>
-
-            </Box>
-            <Box sx={{width: "100%", margin: "5px"}}>
-            </Box>
+            <Box sx={{ width: "100%", margin: "5px" }}></Box>
+            <Box sx={{ width: "100%", margin: "5px" }}></Box>
           </Box>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>

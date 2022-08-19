@@ -1,9 +1,10 @@
-import { Box, Grid, Button, Divider } from "@mui/material";
+import { Translate } from "@material-ui/icons";
+import { Box, Grid, Button, Divider, InputBase, Input } from "@mui/material";
 
 import { styled } from "@mui/system";
 import CompanyChoice from "./CompanyChoice";
 
-const QuantityBox = styled(Box)({
+const QuantityBox = {
   display: "flex",
   alignItems: "center",
   border: "1px solid #E6E7E9",
@@ -14,7 +15,7 @@ const QuantityBox = styled(Box)({
   justifyContent: "center",
   padding: "1px",
   margin: "3px",
-});
+};
 
 const ProductBox = styled(Box)({
   display: "flex",
@@ -96,12 +97,72 @@ const TotalProductTable = () => {
               width: "100%",
             }}
           >
-            <QuantityBox>0</QuantityBox>
-            <QuantityBox>0</QuantityBox>
-            <QuantityBox>0</QuantityBox>
-            <QuantityBox>0</QuantityBox>
-            <QuantityBox>0</QuantityBox>
-            <QuantityBox>0</QuantityBox>
+            <Box sx={QuantityBox}>
+            <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
+            <Box sx={QuantityBox}>
+            <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
+            <Box sx={QuantityBox}>
+            <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
+            <Box sx={QuantityBox}>
+            <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
+            <Box sx={QuantityBox}>
+            <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
+            <Box sx={QuantityBox}>
+              <Input
+                inputProps={{ style: { textAlign: "center" } }}
+                sx={{
+                  fontSize: "13px",
+                  fontWeight: 400,
+                }}
+                disableUnderline
+                placeholder="0"
+              />
+            </Box>
           </Box>
         </Grid>
         <Grid item xs={12} sx={{ display: "flex", justifyContent: "flex-end" }}>

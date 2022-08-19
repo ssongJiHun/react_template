@@ -1,4 +1,4 @@
-import { Button, Typography, Box } from "@mui/material";
+import { Button, Typography, Box, IconButton } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import OutlinedInput from "@mui/material/OutlinedInput";
 
@@ -9,7 +9,7 @@ const MemoData = () => {
         sx={{
           marginTop: "8px",
           display: "flex",
-          flexDirection: "column",
+          flexDirection: "column-reverse",
           alignItems: "center",
           height: "170px",
           mx: "20px",
@@ -78,7 +78,9 @@ const MemoData = () => {
             }}
           >
             2022.08.02
-            <DeleteOutlineIcon />
+            <IconButton>
+              <DeleteOutlineIcon />
+            </IconButton>
           </Typography>
           <Typography
             sx={{

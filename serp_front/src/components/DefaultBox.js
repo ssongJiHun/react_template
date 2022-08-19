@@ -10,7 +10,7 @@ const DefaultBox = () => {
         border: "1px solid #E6E7E9",
         borderRadius: "10px",
         width: "100%",
-        height: "429px",
+        height: "100%",
         fontWeight: 400,
         fontSize: "15px",
         color: "#919294",

@@ -61,8 +61,8 @@ const StockManagementTable = () => {
   return (
     <Box
       sx={{
-        width: "100px",
-        height: "593px",
+        width: "100%",
+        height: "100%",
       }}
     >
       <Box

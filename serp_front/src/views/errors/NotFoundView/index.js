@@ -1,23 +1,31 @@
 import React from "react";
-
-import SensorCardList from "src/components/SensorCardList";
-import Edit from "@mui/icons-material/Edit";
+import CompanyModal from "src/components/CompanyModal";
+import MemoData from "src/components/Company_Data/MemoData";
+import CompanyOrderTable from "src/components/CompanyOrderTable";
+import { useState } from "react";
 import TotalProductTable from "src/components/TotalProductTable";
-import InOutHistory from "src/components/InOutHistory";
-
-import { Box, Typography } from "@mui/material";
-import SearchField from "src/components/SearchField";
-import Registration_Button from "src/components/Registration_Button";
-import TotalAccountTable from "src/components/TotalAccountTable";
 
 const NotFoundView = () => {
+  const rows = {
+    company: "23132",
+    representative: "",
+    registerNum: "",
+    BusinessType: "",
+    DirectorPosition: "",
+    DirectorName: "",
+    phoneNum: "",
+    email: "",
+    address: "",
+  };
+
+  const [Data, setData] = useState(rows);
+
+
   return (
     <div width="100%">
-      <Box sx={{ display: "flex", mb: "20px" }}>
-        <SearchField />
-        <Registration_Button />
-      </Box>
-      <TotalAccountTable />
+      {/* <CompanyModal data={Data} /> */}
+      <CompanyOrderTable/>
+      {/* <MemoData /> */}
     </div>
   );
 };
