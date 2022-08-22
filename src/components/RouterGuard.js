@@ -14,7 +14,7 @@ const RouterGuard = ({ children }) => {
         if (isPost)
             return;
         isPost = true;
-        console.log(axios.defaults.headers.common['Authorization']);
+
         axios.post('/jwt')
             .then((res) => { // 토큰 o -> main page
                 navigate("/", { replace: true })

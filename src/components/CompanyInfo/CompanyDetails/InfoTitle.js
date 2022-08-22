@@ -4,8 +4,8 @@ import { useMutation, useQueryClient } from 'react-query';
 
 
 const InfoTitle = (props) => {
-  const company = props.company;
-
+  const company = props.data;
+  
   const queryClient = useQueryClient();
   const mutation = useMutation(data => {
     return axios.get('/companys/info/createdAt', { params: data });

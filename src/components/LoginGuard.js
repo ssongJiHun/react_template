@@ -2,13 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from "react-router-dom";
-
 import axios from 'src/utils/axios'
 
 // 각종페이지(로그인 세션X) 들어갈때
 const LoginGuard = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
      let isPost = false;
 
     useEffect(() => {
@@ -18,7 +17,10 @@ const LoginGuard = ({ children }) => {
         axios.post('/jwt')
             .then((res) => { // 토큰 o -> ... page
                 setLoading(false)
-            }) // 토큰x -> axios에서 처리
+            })
+            .catch((e)=>{
+                navigate("/login", { replace: true })
+            })
     }, [])
 
     if (loading)

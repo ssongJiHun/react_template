@@ -24,7 +24,6 @@ const SignIn = () => {
 
   const onhandlePost = async (email) => {
 
-    console.log('onhandlePost');
     await axios.post("/account/signIn", {email: email })
       .then((res) => {
         localStorage.setItem('Authorization', res.headers.authorization);

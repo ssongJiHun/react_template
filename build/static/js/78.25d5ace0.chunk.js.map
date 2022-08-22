@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/78.25d5ace0.chunk.js","mappings":"wIAWA,UATqB,WAEnB,OACE,gCAIH,C","sources":["views/errors/NotFoundView/index.js"],"sourcesContent":["import React from 'react';\n\nconst NotFoundView = () => {\n\n  return (\n    <div>\n      404\n    </div>\n  );\n};\n\nexport default NotFoundView;\n"],"names":[],"sourceRoot":""}

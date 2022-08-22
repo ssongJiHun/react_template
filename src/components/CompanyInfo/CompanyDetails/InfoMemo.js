@@ -1,36 +1,44 @@
 import { Button, Typography, Box } from "@mui/material";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import IconButton from "@mui/material/IconButton";
 
 import axios from "../../../utils/axios";
 import { useMutation, useQueryClient } from 'react-query';
-import {useRef, useEffect  } from 'react'
+import { useRef, useEffect } from 'react'
 
 const InfoMemo = (props) => {
   const data = props.data;
-  // data = data.memos.reverse();
 
   const textRef = useRef();
   const memoDiv = useRef();
 
   const queryClient = useQueryClient();
-  const mutation = useMutation(data => {
-    return axios.post('/companys/memo/append', data);
+
+  const appendMutation = useMutation(val => {
+    return axios.post('/companys/memo/append', val);
   }, {
-    onSuccess:  async() => { 
+    onSuccess: () => {
       textRef.current.value = '';
-      await queryClient.invalidateQueries(['companys']);
+      queryClient.invalidateQueries(['companys']);
+    }
+  });
+  const destroyMutation = useMutation(val => {
+    return axios.get('/companys/memo/destroy', { params: val });
+  }, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(['companys']);
     }
   });
 
-  useEffect(()=> {
+  useEffect(() => {
     memoDiv.current.scrollTo(0, memoDiv.current.scrollHeight);
   })
 
   return (
     <Box fullwidth>
       <Box
-        ref = {memoDiv}
+        ref={memoDiv}
         sx={{
           marginTop: "8px",
           display: "flex",
@@ -47,39 +55,44 @@ const InfoMemo = (props) => {
         }}
       >
         {
-          data.memos.map((value, i)=>(
+          data.memos.map((value, i) => (
             <Box key={i} sx={{
               background: "#F8F8FA", width: "92%",
               padding: "16px",
               borderRadius: "8px",
               mb: "5px",
             }} >
-            <Typography
-              variant="subtitle1"
-              sx={{
-                fontWeight: 400,
-                fontSize: "12px",
-                lineHeight: "24px",
-                color: "#919294",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              {value.createdAt.split(' ')[0]}
-              <DeleteOutlineIcon />
-            </Typography>
-            <Typography
-              sx={{
-                fontWeight: 500,
-                fontSize: "12px",
-                lineHeight: "24px",
-                color: "#000000",
-              }}
-            >
-              {value.content}
-            </Typography>
-          </Box>
+              <Typography
+                variant="subtitle1"
+                sx={{
+                  fontWeight: 400,
+                  fontSize: "12px",
+                  lineHeight: "24px",
+                  color: "#919294",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+              >
+                {value.createdAt.split(' ')[0]}
+                <IconButton sx={{padding: "0px"}} onClick={()=>{
+                    destroyMutation.mutate({ idx: value.idx })
+                }}>
+                  <DeleteOutlineIcon />
+                </IconButton>
+
+              </Typography>
+              <Typography
+                sx={{
+                  fontWeight: 500,
+                  fontSize: "12px",
+                  lineHeight: "24px",
+                  color: "#000000",
+                }}
+              >
+                {value.content}
+              </Typography>
+            </Box>
           ))
         }
       </Box>
@@ -108,7 +121,7 @@ const InfoMemo = (props) => {
           placeholder="업체 이슈를 메모해주세요."
           fullWidth
           multiline
-          inputRef={textRef} 
+          inputRef={textRef}
         />
       </Box>
       <Box
@@ -132,13 +145,13 @@ const InfoMemo = (props) => {
             fontSize: "13px",
             lineHeight: "140%",
             padding: "9.5px",
-            
+
           }}
           variant="contained"
-          
-          onClick={()=>{
-            if(textRef.current.value)
-              mutation.mutate({ content: textRef.current.value,  company_idx : data.idx})
+
+          onClick={() => {
+            if (textRef.current.value)
+              appendMutation.mutate({ content: textRef.current.value, company_idx: data.idx })
 
           }}
         >

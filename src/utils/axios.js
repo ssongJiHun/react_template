@@ -29,7 +29,7 @@ const Interceptor = ({children}) => {
     // Authorization 헤더가 비어있다면 갱신 안해도되는 거임
     client.interceptors.response.use(
       function (response) {
-        
+        console.log(response.status);
         if(response.headers.authorization) {
           localStorage.setItem('Authorization', response.headers.authorization);
         }
@@ -37,6 +37,7 @@ const Interceptor = ({children}) => {
       },
       function (error) {
         // 백엔드에서 jwt(검증+갱신) 후 토큰 만료(액세스+리프레쉬)
+        console.log(error.response.status);
         if (error.response && error.response.status === 400) 
             navigate("/login", { replace: true })
         

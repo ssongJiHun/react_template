@@ -7,19 +7,11 @@ import InfoMemo from "./InfoMemo";
 import { useQueryClient } from 'react-query';
 
 const CompanyDetails = (props) => {
-  const {companyIdx} = props;
-
-  const queryClient = useQueryClient();
-  const query = queryClient.getQueryData(['companys'])
-  
-  console.log(companyIdx)
-  // const getCurrentCompany =(idx)=>{
-  //   return query.find(e => e.idx === idx)
-  // }  lodash 으로 정렬
+  const {detailsInfo} = props;
 
   return (
 
-    companyIdx === -1 ? (
+    detailsInfo === null ? (
       <Paper sx={{
         ml: 10,
         display: "flex",
@@ -33,9 +25,9 @@ const CompanyDetails = (props) => {
       </Paper>
     ) : (
       <Paper sx={{ ml: 10 }}>
-        {/* <InfoTitle  data={query.find(e => e.idx === companyIdx)}/> */}
-        {/* <InfoContent data={res} />
-        <InfoMemo data={{idx : res.idx, memos : res.company_memos}} /> */}
+        <InfoTitle  data={detailsInfo}/>
+        <InfoContent data={detailsInfo} />
+        <InfoMemo data={{idx : detailsInfo.idx, memos : detailsInfo.company_memos}} />
       </Paper>
 
     )

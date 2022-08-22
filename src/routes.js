@@ -67,16 +67,16 @@ const RenderRoutes = () => {
           routes.map((route, i) => {
             const RouteElement = route.element;
             const RouteLayout = route.layout || React.Fragment
-            const RouteGuard = route.guard || React.Fragment;
+            const Guard = route.guard || React.Fragment;
 
             return (
               <Route key={i} path={route.path}
                 element={
-                  <RouteGuard>
+                  <Guard>
                     <RouteLayout>
                       <RouteElement />
                     </RouteLayout>
-                  </RouteGuard>
+                  </Guard>
                 }>
               </Route>
             )
